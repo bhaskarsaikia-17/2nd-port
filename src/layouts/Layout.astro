@@ -2,7 +2,7 @@
 import "non.geist/mono";
 import "non.geist";
 import "../components/tw.css";
-import { ClientRouter, fade } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import DotBackgroundWrapper from "../components/ui/dot-background-wrapper.astro";
 import NavigationBar from "../components/navigation-bar.astro";
 
@@ -178,7 +178,7 @@ const unsupportedEngine =
   }
 </style>
 
-<script define:vars={{ unsupportedEngine }}>
+<script is:inline define:vars={{ unsupportedEngine }}>
   if (unsupportedEngine) {
     console.warn(
       "Unsupported engine detected. Some features may not work as expected. You may want to switch to a modern browser.",

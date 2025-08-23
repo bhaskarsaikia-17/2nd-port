@@ -1,4 +1,3 @@
-import type { DatabaseQueryResponse } from "cloudflare/resources/d1/database.mjs"
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 import type { ActivityTrack, ActivityTrackDatabaseRow, NormalizedInputData } from "./types"
@@ -7,8 +6,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function parseActivityTrack(data: DatabaseQueryResponse) {
-  return data.flatMap(item =>
+export function parseActivityTrack(data: any) {
+  return data.flatMap((item: any) =>
     (item["results"] as Array<ActivityTrackDatabaseRow>)?.map((result) => ({
       ...result,
       mouse_activity: JSON.parse(result.mouse_activity),
