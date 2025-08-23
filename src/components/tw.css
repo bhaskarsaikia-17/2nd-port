@@ -9,6 +9,7 @@
       --chart-3: 197 37% 24%;
       --chart-4: 43 74% 66%;
       --chart-5: 27 87% 67%;
+      --smooth-animation: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .dark {
@@ -17,6 +18,93 @@
       --chart-3: 30 80% 55%;
       --chart-4: 280 65% 60%;
       --chart-5: 340 75% 55%;
+    }
+
+    @keyframes theme-switch-expand {
+      0% {
+        mask-size: 0;
+      }
+      10% {
+        mask-size: 50vmax;
+      }
+      80% {
+        mask-size: 45vmax;
+      }
+      100% {
+        mask-size: 2000vmax;
+      }
+    }
+
+    html {
+      font-family: "Geist Variable", system-ui, sans-serif;
+      overflow-y: scroll;
+      background: theme(colors.theme.background.DEFAULT);
+      min-height: 100svh;
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100svh;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: theme(colors.theme.foreground.contrast);
+    }
+
+    ::-moz-selection {
+      background: theme(colors.theme.foreground.contrast);
+    }
+
+    ::-webkit-scrollbar {
+      width: 0.4rem;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: theme(colors.theme.background.DEFAULT / 0.2);
+      border-radius: 9999px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: theme(colors.theme.background.DEFAULT / 0.2);
+    }
+
+    .geist-mono {
+      font-family: "Geist Mono Variable", system-ui, sans-serif;
+    }
+
+    html::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-size: 2px 2px;
+      background-repeat: repeat;
+      pointer-events: none;
+    }
+
+    code {
+      font-family:
+        "Geist Mono",
+        Menlo,
+        Monaco,
+        Lucida Console,
+        Liberation Mono,
+        DejaVu Sans Mono,
+        Bitstream Vera Sans Mono,
+        Courier New,
+        monospace;
+    }
+
+    a.link {
+      text-decoration-line: underline;
+      text-underline-offset: 0.25rem;
+      transition: color 0.1s ease-in-out;
+    }
+
+    a.link:hover {
+      color: theme(colors.theme.foreground.secondary);
     }
 
     .mask-border {
@@ -34,5 +122,4 @@
     .element-glow {
       @apply absolute z-[1]
     }
-    
-  }
+}

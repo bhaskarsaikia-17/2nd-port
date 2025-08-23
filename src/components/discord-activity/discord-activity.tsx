@@ -6,7 +6,7 @@ import { ActivityIndicator } from "./activity-indicator";
 export function DiscordActivity() {
     const [lanyardData, setLanyardData] = useState<LanyardData | null>(null);
 
-    const { loading, status, websocket } = useLanyard({
+    const { loading, status } = useLanyard({
         userId: "1273333726323019817",
         socket: true
     })

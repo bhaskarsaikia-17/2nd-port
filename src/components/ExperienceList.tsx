@@ -1,9 +1,9 @@
-import type { Experience } from "../types";
-import { cn } from "../util";
-import { motion } from "framer-motion";
+import type { Experience } from "../types"
+import { cn } from "../util"
+import { motion } from "framer-motion"
 
 interface ExperienceListProps {
-  experiences: Experience[];
+  experiences: Experience[]
 }
 
 const container = {
@@ -51,25 +51,20 @@ export function ExperienceList({ experiences }: ExperienceListProps) {
             key={experience.id}
             onClick={() => {
               if (experience.url) {
-                window.open(experience.url);
+                window.open(experience.url)
               }
             }}
           >
-            <div
-              className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-purple-500/5 mix-blend-overlay pointer-events-none opacity-50"
-            >
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-purple-500/5 mix-blend-overlay pointer-events-none opacity-50" />
 
             <div
               className="absolute inset-0 opacity-[0.05] dark:opacity-[0.1] pointer-events-none"
-              style={{ backgroundImage: "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMSAwIDAgMCAwIDEgMCAwIDAgMCAxIDAgMCAwIDAuNSAwIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNhKSIvPjwvc3ZnPg==')" }}
-            >
-            </div>
+              style={{ 
+                backgroundImage: "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMSAwIDAgMCAwIDEgMCAwIDAgMCAxIDAgMCAwIDAuNSAwIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNhKSIvPjwvc3ZnPg==')" 
+              }}
+            />
 
-            <div
-              className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-black/10 dark:via-white/20 to-transparent"
-            >
-            </div>
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-black/10 dark:via-white/20 to-transparent" />
 
             <div className="p-6 flex justify-between relative">
               <div className="flex flex-col gap-2">
@@ -77,7 +72,6 @@ export function ExperienceList({ experiences }: ExperienceListProps) {
                   <h3 className="text-lg font-bold text-theme-foreground dark:text-white">
                     {experience.company} - <span>{experience.position}</span>
                   </h3>
-
                 </div>
 
                 {experience.url && (
@@ -110,11 +104,11 @@ export function ExperienceList({ experiences }: ExperienceListProps) {
               />
             </div>
 
-            <div className="element-glow absolute inset-0 rounded-lg mask-border pointer-events-none"></div>
+            <div className="element-glow absolute inset-0 rounded-lg mask-border pointer-events-none" />
           </motion.div>
-        );
+        )
       })}
-      <div className="h-32"></div>
+      <div className="h-32" />
     </motion.div>
-  );
+  )
 }
