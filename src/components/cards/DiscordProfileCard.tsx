@@ -236,18 +236,13 @@ export default function DiscordProfileCard() {
 
         {/* User ID */}
         <div className="text-xs text-theme-foreground-secondary dark:text-gray-500 font-mono">
-          ID: {DISCORD_USER_ID}
+         Discord User ID: {DISCORD_USER_ID}
         </div>
       </div>
 
       <ElementGlow />
       
-      {/* Credits */}
-      <div className="mt-4 pt-3 border-t border-black/5 dark:border-white/5">
-        <p className="text-xs text-theme-foreground-secondary dark:text-gray-500 text-center">
-          Crafted With ❤️ By Bhaskar
-        </p>
-      </div>
+      
     </div>
   );
 }
