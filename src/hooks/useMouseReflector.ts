@@ -65,12 +65,12 @@ export function useMouseReflector(options: UseMouseReflectorOptions = {}) {
 
         const rect = card.getBoundingClientRect();
 
-        // Check if mouse is near the card
-        const isNearCard =
-          e.clientX >= rect.left - proximityThreshold &&
-          e.clientX <= rect.right + proximityThreshold &&
-          e.clientY >= rect.top - proximityThreshold &&
-          e.clientY <= rect.bottom + proximityThreshold;
+        // Check if mouse is near the card (currently unused)
+        // const isNearCard =
+        //   e.clientX >= rect.left - proximityThreshold &&
+        //   e.clientX <= rect.right + proximityThreshold &&
+        //   e.clientY >= rect.top - proximityThreshold &&
+        //   e.clientY <= rect.bottom + proximityThreshold;
 
         // Handle element glows
         const glowElements = document.querySelectorAll('.element-glow') as NodeListOf<HTMLElement>;
