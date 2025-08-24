@@ -63,7 +63,8 @@ export function useMouseReflector(options: UseMouseReflectorOptions = {}) {
         const card = document.getElementById(cardId) as HTMLElement;
         if (!card) return;
 
-        const rect = card.getBoundingClientRect();
+        // Card rect calculation removed as it's currently unused
+        // const rect = card.getBoundingClientRect();
 
         // Check if mouse is near the card (currently unused)
         // const isNearCard =
