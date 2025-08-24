@@ -1,4 +1,9 @@
 {
+  "functions": {
+    "api/discord-user.js": {
+      "runtime": "@vercel/node"
+    }
+  },
   "rewrites": [
     {
       "source": "/((?!api/.*).*)",

@@ -3,6 +3,7 @@ import ProfileHeader from '../components/ProfileHeader'
 import AboutCard from '../components/cards/AboutCard'
 import SkillCard from '../components/cards/SkillCard'
 import ActivityCard from '../components/cards/ActivityCard'
+import DiscordProfileCard from '../components/cards/DiscordProfileCard'
 import MainContent from '../components/ui/MainContent'
 
 const HomePage = () => {
@@ -27,6 +28,8 @@ const HomePage = () => {
         
         <div className="p-8 space-y-8 relative">
           <AboutCard />
+          
+          <DiscordProfileCard />
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <SkillCard />

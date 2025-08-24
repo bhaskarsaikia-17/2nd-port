@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { useLanyard, type LanyardData } from "react-use-lanyard";
 import { LoaderCircle } from "lucide-react"
 import { ActivityIndicator } from "./activity-indicator";
+import { DISCORD_USER_ID } from '../../config/discord';
 
 export function DiscordActivity() {
     const [lanyardData, setLanyardData] = useState<LanyardData | null>(null);
 
     const { loading, status } = useLanyard({
-        userId: "1273333726323019817",
+        userId: DISCORD_USER_ID,
         socket: true
     })
 
