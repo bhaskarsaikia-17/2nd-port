@@ -2,6 +2,7 @@ import type { Experience } from "../types";
 import { cn } from "../util";
 import { motion } from "framer-motion";
 
+
 interface ExperienceListProps {
   experiences: Experience[];
 }
@@ -33,6 +34,7 @@ const card = {
 }
 
 export function ExperienceList({ experiences }: ExperienceListProps) {
+
   return (
     <motion.div
       variants={container}

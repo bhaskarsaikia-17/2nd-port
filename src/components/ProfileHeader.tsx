@@ -1,5 +1,6 @@
 import { DISCORD_PROFILE_URL } from '../config/discord';
 
+
 interface SocialLink {
   href: string
   icon: string
@@ -30,6 +31,7 @@ const socialLinks: SocialLink[] = [
 ]
 
 const ProfileHeader = () => {
+
   return (
     <div className="flex flex-col md:flex-row items-start md:items-center gap-8 p-8 border-b border-theme-card-border">
       <div className="relative group">
@@ -67,6 +69,7 @@ const ProfileHeader = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
+
                   className="group flex items-center gap-2 px-3 py-1.5 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-full transition-all hover:bg-black/10 dark:hover:bg-white/10 hover:border-black/20 dark:hover:border-white/15 relative"
                 >
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-black/10 dark:via-white/20 to-transparent" />

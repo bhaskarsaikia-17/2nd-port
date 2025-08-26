@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import { cn } from '../util'
 
+
 const routes = [
   { name: 'Home', path: '/' },
   { name: 'Experience', path: '/experience' },
@@ -14,6 +15,7 @@ const NavigationBar = () => {
   const navIndicatorRef = useRef<HTMLDivElement>(null)
   const navContainerWrapperRef = useRef<HTMLDivElement>(null)
   const scrollToTopRef = useRef<HTMLButtonElement>(null)
+
 
   const positionIndicator = () => {
     const activeLink = document.querySelector(
@@ -145,7 +147,9 @@ const NavigationBar = () => {
       <div id="nav-wrapper" className="relative flex items-center justify-center">
         <button
           ref={scrollToTopRef}
-          onClick={scrollToTop}
+          onClick={() => {
+            scrollToTop()
+          }}
           className="absolute left-0 p-1.5 bg-theme-card-dark backdrop-blur-lg border border-theme-card-border rounded-full hover:bg-theme-card transition-all opacity-0 scale-0 transform -translate-x-[100%] origin-right"
           aria-label="Scroll to top"
           style={{
@@ -223,7 +227,9 @@ const NavigationBar = () => {
                 data-path={route.path}
                 data-index={idx}
                 data-active={location.pathname === route.path}
-                onClick={handleNavLinkClick}
+                onClick={(e) => {
+                  handleNavLinkClick(e)
+                }}
                 className={cn(
                   'nav-link relative px-4 rounded-full text-sm font-medium transition-colors duration-300 mx-1',
                   location.pathname === route.path
@@ -240,7 +246,9 @@ const NavigationBar = () => {
             ))}
 
             <button
-              onClick={setupThemeToggle}
+              onClick={() => {
+                setupThemeToggle()
+              }}
               className="ml-2 p-1.5 bg-theme-card-dark border dark:border-theme-card-border hover:bg-theme-card rounded-full transition-all md:flex z-10"
               aria-label="Toggle theme"
               style={{

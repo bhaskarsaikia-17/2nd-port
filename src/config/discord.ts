@@ -16,7 +16,7 @@ export const DISCORD_CONFIG = {
   /**
    * Your Discord User ID - UPDATE THIS VALUE TO CHANGE EVERYWHERE
    */
-  USER_ID: "1273333726323019817",
+  USER_ID: "1385372134238326834",
   
   /**
    * Discord profile URL - automatically generated from USER_ID
