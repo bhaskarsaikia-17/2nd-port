@@ -15,8 +15,8 @@ const getSongs = async (): Promise<Song[]> => {
       id: '1',
       title: 'I like the way you kiss me',
       artist: 'Artemas',
-      audioSrc: '/songs/I like the way you kiss me/i like the way you kiss me - Artemas.mp3',
-      thumbnail: '/songs/I like the way you kiss me/I like the way you kiss me.jpg'
+      audioSrc: '/songs/I%20like%20the%20way%20you%20kiss%20me/i%20like%20the%20way%20you%20kiss%20me%20-%20Artemas.mp3',
+      thumbnail: '/songs/I%20like%20the%20way%20you%20kiss%20me/I%20like%20the%20way%20you%20kiss%20me.jpg'
     }
   ]
 }

@@ -52,10 +52,12 @@ export const MusicProvider = ({ children }: MusicProviderProps) => {
     const audio = audioRef.current
     if (!audio || !currentSong) return
 
+    console.log('Loading audio:', currentSong.audioSrc)
     audio.src = currentSong.audioSrc
     audio.volume = isMuted ? 0 : volume
 
     const setAudioData = () => {
+      console.log('Audio loaded successfully:', currentSong.title)
       setDuration(audio.duration)
       setCurrentTime(audio.currentTime)
     }
@@ -66,14 +68,33 @@ export const MusicProvider = ({ children }: MusicProviderProps) => {
       nextSong()
     }
 
+    const handleError = (e: Event) => {
+      console.error('Audio loading error:', e)
+      console.error('Failed to load:', currentSong.audioSrc)
+      // Try to play next song if this one fails
+      setTimeout(() => {
+        if (songs.length > 1) {
+          nextSong()
+        }
+      }, 1000)
+    }
+
+    const handleCanPlay = () => {
+      console.log('Audio can play:', currentSong.title)
+    }
+
     audio.addEventListener('loadeddata', setAudioData)
     audio.addEventListener('timeupdate', setAudioTime)
     audio.addEventListener('ended', handleEnded)
+    audio.addEventListener('error', handleError)
+    audio.addEventListener('canplay', handleCanPlay)
 
     return () => {
       audio.removeEventListener('loadeddata', setAudioData)
       audio.removeEventListener('timeupdate', setAudioTime)
       audio.removeEventListener('ended', handleEnded)
+      audio.removeEventListener('error', handleError)
+      audio.removeEventListener('canplay', handleCanPlay)
     }
   }, [currentSongIndex, songs])
 
@@ -192,6 +213,7 @@ export const MusicProvider = ({ children }: MusicProviderProps) => {
       <audio
         ref={audioRef}
         preload="auto"
+        crossOrigin="anonymous"
         style={{ display: 'none' }}
       />
     </MusicContext.Provider>
