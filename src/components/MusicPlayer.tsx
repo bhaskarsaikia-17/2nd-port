@@ -12,7 +12,12 @@ const MusicPlayer = ({ className }: MusicPlayerProps) => {
     currentTime,
     duration,
     songs,
+    isPlaying,
     seekTo,
+    togglePlayPause,
+    nextSong,
+    prevSong,
+    needsUserInteraction,
   } = useMusicContext()
   
   const progressBarRef = useRef<HTMLDivElement>(null)
@@ -101,6 +106,58 @@ const MusicPlayer = ({ className }: MusicPlayerProps) => {
           </div>
         </div>
 
+        {/* User interaction prompt */}
+        {needsUserInteraction && (
+          <div className="text-center py-2">
+            <p className="text-sm text-theme-foreground-secondary">
+              Click play to start music
+            </p>
+          </div>
+        )}
+
+        {/* Control buttons */}
+        <div className="flex items-center justify-center space-x-4">
+          <button
+            onClick={prevSong}
+            className="p-2 rounded-full hover:bg-theme-foreground/10 transition-colors duration-200 text-theme-foreground/70 hover:text-theme-foreground"
+            aria-label="Previous song"
+          >
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+            </svg>
+          </button>
+          
+          <button
+            onClick={togglePlayPause}
+            className={cn(
+              "p-3 rounded-full transition-all duration-200 text-white shadow-lg hover:shadow-xl transform hover:scale-105",
+              needsUserInteraction
+                ? "bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 animate-pulse"
+                : "bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600"
+            )}
+            aria-label={isPlaying ? "Pause" : "Play"}
+          >
+            {isPlaying ? (
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            )}
+          </button>
+          
+          <button
+            onClick={nextSong}
+            className="p-2 rounded-full hover:bg-theme-foreground/10 transition-colors duration-200 text-theme-foreground/70 hover:text-theme-foreground"
+            aria-label="Next song"
+          >
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+            </svg>
+          </button>
+        </div>
 
       </div>
     </div>
