@@ -1,10 +1,10 @@
-import type { Experience } from "../types";
+import type { Project } from "../types";
 import { cn } from "../util";
 import { motion } from "framer-motion";
 
 
 interface ExperienceListProps {
-  experiences: Experience[];
+  experiences: Project[];
 }
 
 const container = {

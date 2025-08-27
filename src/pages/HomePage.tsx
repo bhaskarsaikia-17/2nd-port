@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Footer from '../components/Footer'
 import ProfileHeader from '../components/ProfileHeader'
 import AboutCard from '../components/cards/AboutCard'
@@ -5,9 +6,18 @@ import SkillCard from '../components/cards/SkillCard'
 import ActivityCard from '../components/cards/ActivityCard'
 import DiscordProfileCard from '../components/cards/DiscordProfileCard'
 import MainContent from '../components/ui/MainContent'
+import LoadingScreen from '../components/LoadingScreen'
 
 const HomePage = () => {
+  const [showLoading, setShowLoading] = useState(true)
+
+  const handleLoadingComplete = () => {
+    setShowLoading(false)
+  }
+
   return (
+    <>
+      {showLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
     <MainContent>
       <div
         id="mainCard"
@@ -40,6 +50,7 @@ const HomePage = () => {
 
       <Footer />
     </MainContent>
+    </>
   )
 }
 

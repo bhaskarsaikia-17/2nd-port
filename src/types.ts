@@ -1,4 +1,4 @@
-export interface Experience {
+export interface Project {
   id: string
   title: string
   shortDescription: string

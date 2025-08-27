@@ -1,6 +1,19 @@
-import type { Experience } from '../types'
+import type { Project } from '../types'
 
-export const experienceData: Experience[] = [
+export const projectsData: Project[] = [
+  {
+    id: 'markdown-previewer',
+    title: 'Markdown Previewer',
+    shortDescription: 'A real-time markdown previewer with live editing, syntax highlighting, and responsive design',
+    heroImage: '/github.png',
+    startDate: '2024',
+    endDate: 'Present',
+    flag: 'Markdown | React',
+    flagColor: 'f56565',
+    url: 'https://markdown.bhaskar.lol/',
+    company: 'Personal Project',
+    position: 'Developer',
+  },
   {
     id: 'github-view-booster',
     title: 'GitHub View Booster',
@@ -42,8 +55,8 @@ export const experienceData: Experience[] = [
   },
 ]
 
-export const getExperience = () => {
-  return experienceData.sort((a, b) => {
+export const getProjects = () => {
+  return projectsData.sort((a, b) => {
     const dateA = new Date(a.startDate)
     const dateB = new Date(b.startDate)
     return dateB.getTime() - dateA.getTime()

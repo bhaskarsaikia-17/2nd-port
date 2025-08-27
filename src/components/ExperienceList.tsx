@@ -1,10 +1,10 @@
-import type { Experience } from "../types"
+import type { Project } from "../types"
 import { cn } from "../util"
 import { motion } from "framer-motion"
 
 
-interface ExperienceListProps {
-  experiences: Experience[]
+interface ProjectListProps {
+  projects: Project[]
 }
 
 const container = {
@@ -33,7 +33,7 @@ const card = {
   },
 }
 
-export function ExperienceList({ experiences }: ExperienceListProps) {
+export function ProjectList({ projects }: ProjectListProps) {
 
   return (
     <motion.div
@@ -42,18 +42,18 @@ export function ExperienceList({ experiences }: ExperienceListProps) {
       animate="show"
       className="grid grid-cols-1 gap-6"
     >
-      {experiences.map((experience) => {
+      {projects.map((project) => {
         return (
           <motion.div
             variants={card}
             className={cn(
               "relative backdrop-blur-xl bg-white/30 dark:bg-black/25 border border-black/10 dark:border-white/10 rounded-2xl shadow-xl",
-              experience.url ? "hover:border-black/20 dark:hover:border-white/20 hover:bg-white/40 dark:hover:bg-black/30 transition-all duration-300 cursor-pointer" : ""
+              project.url ? "hover:border-black/20 dark:hover:border-white/20 hover:bg-white/40 dark:hover:bg-black/30 transition-all duration-300 cursor-pointer" : ""
             )}
-            key={experience.id}
+            key={project.id}
             onClick={() => {
-              if (experience.url) {
-                window.open(experience.url)
+              if (project.url) {
+                window.open(project.url)
               }
             }}
           >
@@ -72,35 +72,35 @@ export function ExperienceList({ experiences }: ExperienceListProps) {
               <div className="flex flex-col gap-2">
                 <div className="flex gap-2 items-center">
                   <h3 className="text-lg font-bold text-theme-foreground dark:text-white">
-                    {experience.company} - <span>{experience.position}</span>
+                    {project.company} - <span>{project.position}</span>
                   </h3>
                 </div>
 
-                {experience.url && (
-                  <p className="text-sm text-theme-foreground-secondary dark:text-white/75">{experience.url}</p>
+                {project.url && (
+                  <p className="text-sm text-theme-foreground-secondary dark:text-white/75">{project.url}</p>
                 )}
 
                 <p className="text-theme-foreground dark:text-white opacity-95">
-                  {experience.shortDescription}
+                  {project.shortDescription}
                 </p>
 
                 <div className="flex gap-2 items-center">
                   <p className="text-sm text-theme-foreground-secondary dark:text-white/50">
-                    {experience.startDate} {experience.endDate ? ` - ${experience.endDate}` : ""}
+                    {project.startDate} {project.endDate ? ` - ${project.endDate}` : ""}
                   </p>
 
-                  {experience.flag &&
+                  {project.flag &&
                     <span
                       className={cn(`px-2 py-[1px] rounded-full uppercase font-semibold text-xs text-theme-foreground/70 dark:text-white/70 w-fit bg-black/5 dark:bg-white/10 border border-black/10 dark:border-white/20`)}
                     >
-                      {experience.flag}
+                      {project.flag}
                     </span>
                   }
                 </div>
               </div>
 
               <img
-                src={experience.heroImage}
+                src={project.heroImage}
                 alt=""
                 className="object-fit w-20 h-20 rounded-lg"
               />

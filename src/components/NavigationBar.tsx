@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import { cn } from '../util'
+import { useSmoothScrollContext } from '../contexts/SmoothScrollContext'
 
 
 const routes = [
   { name: 'Home', path: '/' },
-  { name: 'Experience', path: '/experience' },
+  { name: 'Projects', path: '/projects' },
   { name: 'Sources', path: '/sources' },
+  { name: 'Music', path: '/music' },
 ]
 
 const NavigationBar = () => {
@@ -15,6 +17,7 @@ const NavigationBar = () => {
   const navIndicatorRef = useRef<HTMLDivElement>(null)
   const navContainerWrapperRef = useRef<HTMLDivElement>(null)
   const scrollToTopRef = useRef<HTMLButtonElement>(null)
+  const { scrollToTop: smoothScrollToTop } = useSmoothScrollContext()
 
 
   const positionIndicator = () => {
@@ -105,7 +108,7 @@ const NavigationBar = () => {
   }
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    smoothScrollToTop({ duration: 1.2 })
   }
 
   useEffect(() => {

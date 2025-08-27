@@ -1,0 +1,72 @@
+import { ProjectList } from '../components/ProjectList'
+import Footer from '../components/Footer'
+import MainContent from '../components/ui/MainContent'
+import { getProjects } from '../data/projects'
+import ProfileHeader from '../components/ProfileHeader'
+
+const ProjectsPage = () => {
+  const projects = getProjects()
+
+  return (
+    <MainContent>
+      <div
+        id="mainCard"
+        className="relative backdrop-blur-xl bg-theme-card border border-theme-card-border rounded-2xl overflow-hidden shadow-2xl mb-6 h-fit dark:bg-black/25 dark:border-white/10"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-purple-500/5 mix-blend-overlay pointer-events-none opacity-50" />
+
+        <div
+          className="absolute inset-0 opacity-[0.05] dark:opacity-[0.1] pointer-events-none"
+          style={{
+            backgroundImage: "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMSAwIDAgMCAwIDEgMCAwIDAgMCAxIDAgMCAwIDAuNSAwIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNhKSIvPjwvc3ZnPg==');",
+          }}
+        />
+
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-black/10 dark:via-white/20 to-transparent" />
+
+        <ProfileHeader />
+      </div>
+
+      <div className="relative">
+        <ProjectList projects={projects} />
+      </div>
+
+      <Footer />
+      
+      <style>{`
+        .max-h-[70vh]::-webkit-scrollbar {
+          width: 4px;
+        }
+
+        .max-h-[70vh]::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        .max-h-[70vh]::-webkit-scrollbar-thumb {
+          background: theme(colors.theme.foreground.secondary / 40%);
+          border-radius: 10px;
+        }
+
+        .max-h-[70vh]:hover::-webkit-scrollbar-thumb {
+          background: theme(colors.theme.foreground.secondary / 60%);
+        }
+
+        .element-glow {
+          box-shadow: 0 0 50px 5px theme(colors.indigo.500 / 10%);
+        }
+
+        .mask-border {
+          mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 5%,
+            black 95%,
+            transparent 100%
+          );
+        }
+      `}</style>
+    </MainContent>
+  )
+}
+
+export default ProjectsPage

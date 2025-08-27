@@ -41,11 +41,19 @@
       background: theme(colors.theme.background.DEFAULT);
       min-height: 100svh;
       overflow-x: hidden;
+      /* Optimize for smooth scrolling performance */
+      scroll-behavior: auto; /* Let Lenis handle smooth scrolling */
     }
 
     body {
       min-height: 100svh;
       overflow-x: hidden;
+      /* Performance optimizations for smooth scrolling */
+      will-change: transform;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      perspective: 1000px;
     }
 
     ::selection {
@@ -121,5 +129,33 @@
   
     .element-glow {
       @apply absolute z-[1]
+    }
+
+    /* Smooth scrolling performance optimizations */
+    * {
+      /* Hardware acceleration for better performance */
+      transform: translateZ(0);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Optimize animations and transitions for smooth scrolling */
+    .transition-all,
+    .transition-transform,
+    .transition-opacity {
+      will-change: transform, opacity;
+    }
+
+    /* Reduce paint and layout recalculations */
+    .overflow-y-auto,
+    .overflow-auto {
+      contain: layout style paint;
+    }
+
+    /* Optimize hover effects for smooth scrolling */
+    .hover\:scale-\[1\.02\]:hover,
+    .hover\:scale-105:hover,
+    .group:hover .group-hover\:scale-110 {
+      transform: translateZ(0) scale(var(--tw-scale-x), var(--tw-scale-y));
     }
 }

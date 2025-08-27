@@ -39,6 +39,9 @@ export default {
         'spring': "spring 1s cubic-bezier(0.25, 1, 0.5, 1) forwards",
         'bounce': "bounce 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards",
       },
+      transitionDuration: {
+        '1500': '1500ms',
+      },
     },
   },
   plugins: [

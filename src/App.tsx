@@ -2,12 +2,16 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
-import ExperiencePage from './pages/ExperiencePage'
+import ProjectsPage from './pages/ProjectsPage'
 import SourcesPage from './pages/SourcesPage'
+import MusicPage from './pages/MusicPage'
 import { initGlowEffect, applyStoredTheme } from './util'
-
-function App() {
+import { SmoothScrollProvider, useSmoothScrollContext } from './contexts/SmoothScrollContext'
+import { MusicProvider } from './contexts/MusicContext'
+// Internal App component that uses the context
+function AppContent() {
   const location = useLocation()
+  const { scrollToTop } = useSmoothScrollContext()
 
   useEffect(() => {
     applyStoredTheme()
@@ -16,17 +20,22 @@ function App() {
     // Update document title based on route
     const getTitle = () => {
       switch (location.pathname) {
-        case '/experience':
-          return 'Experience - Bhaskar'
+        case '/projects':
+          return 'Projects - Bhaskar'
         case '/sources':
           return 'Sources - Bhaskar'
+        case '/music':
+          return 'Music - Bhaskar'
         default:
           return 'Bhaskar'
       }
     }
     
     document.title = getTitle()
-  }, [location])
+    
+    // Scroll to top on route change with smooth animation
+    scrollToTop({ duration: 0.8 })
+  }, [location, scrollToTop])
 
   useEffect(() => {
     const handleUserAgent = () => {
@@ -47,10 +56,22 @@ function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/experience" element={<ExperiencePage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/sources" element={<SourcesPage />} />
+        <Route path="/music" element={<MusicPage />} />
       </Routes>
     </Layout>
+  )
+}
+
+// Main App component with providers
+function App() {
+  return (
+    <MusicProvider>
+      <SmoothScrollProvider>
+        <AppContent />
+      </SmoothScrollProvider>
+    </MusicProvider>
   )
 }
 
